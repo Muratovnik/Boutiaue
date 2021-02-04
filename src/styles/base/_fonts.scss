@@ -1,0 +1,26 @@
+/* ---------------------
+        Шрифт
+--------------------- */
+@font-face {
+    font-family: "Museo";
+    src : url("../font/Museo Cyrl 500.otf"),
+    url("../font/__MACOSX/._Museo Cyrl 500.otf");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Museo";
+    src : url("../font/Museo Cyrl 700.otf"),
+    url("../font/__MACOSX/._Museo Cyrl 700.otf");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "MuseoSans";
+    src : url("../font/MuseoSansCyrl_500.otf"),
+    url("../font/__MACOSX/._MuseoSansCyrl_500.otf");
+    font-weight: 500;
+    font-style: normal;
+}

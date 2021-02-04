@@ -1,0 +1,13 @@
+// *** Base ***
+@import "base/_fonts.scss";
+@import "base/_variables.scss";
+@import "base/_mixins.scss";
+@import "base/_keyframes.scss";
+@import "base/_common.scss";
+
+// *** Components ***
+@import "parts/_header.scss";
+@import "parts/_footer.scss";
+
+// *** Pages ***
+@import "pages/_index-page.scss";

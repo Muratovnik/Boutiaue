@@ -1,0 +1,78 @@
+- const title = "Косметика";
+include ./includes/_mixin.pug
+doctype html
+html(lang="ru")
+    head
+        include ./includes/_head.pug
+    body
+        // Header
+        include ./includes/_header.pug
+
+        // Content
+        main
+            section.intro
+                .container
+                    .intro__center
+                        h1.intro__title Ты — классная!
+                        button.btn.intro__btn Обратная связь
+                    .intro__bottom
+                        p.h3 Мы выбрали для тебя самые классные товары из нашего интернет-магазина:
+            section.catalog
+                h2.visually-hidden Подборка
+                .container
+                    ul.catalog__list
+                        li.catalog__item
+                            - let i = 1;
+                            a.catalog__link(href="#")
+                                img(src="img/goods/item"+i+"@2x.jpg", alt="Лак")
+                                span Лаки для ногтей
+                            - i++
+                        li.catalog__item
+                            a.catalog__link(href="#")
+                                img(src="img/goods/item"+i+"@2x.jpg", alt="Лак")
+                                span Дизайн для ногтей
+                            - i++
+                        li.catalog__item
+                            a.catalog__link(href="#")
+                                img(src="img/goods/item"+i+"@2x.jpg", alt="Лак")
+                                span Инструменты для маникюра и педикюра
+                            - i++
+                        li.catalog__item
+                            a.catalog__link(href="#")
+                                img(src="img/goods/item"+i+"@2x.jpg", alt="Лак")
+                                span Бижутерия
+                            - i++
+                        li.catalog__item
+                            a.catalog__link(href="#")
+                                img(src="img/goods/item"+i+"@2x.jpg", alt="Лак")
+                                span Гель-лаки
+                            - i++
+                        li.catalog__item
+                            a.catalog__link(href="#")
+                                img(src="img/goods/item"+i+"@2x.jpg", alt="Лак")
+                                span Украшения для волос
+                            - i++
+                        li.catalog__item
+                            a.catalog__link(href="#")
+                                img(src="img/goods/item"+i+"@2x.jpg", alt="Лак")
+                                span Оборудование для парикмахерских
+                            - i++
+            section.write-us
+                .container
+                    .write-us__top
+                        h2 Напишите нам
+                        button(aria-label='Закрыть форму').write-us__close
+                            img(src="img/Union.svg", alt="Закрыть")
+                    form(method="POST").write-us__form
+                        p.write-us__wrap
+                            label(for="name").write-us__label Имя:
+                            input(type="text").input
+                        p.write-us__wrap
+                            label(for="name").write-us__label Телефон:
+                            input(type="tel").write-us__input.-tel.input
+                        p.write-us__wrap
+                            label(for="name").write-us__label Эл. почта:
+                            input(type="email").input
+                        p.write-us__wrap
+                            label(for="name").write-us__label Сообщение:
+                            textarea.input

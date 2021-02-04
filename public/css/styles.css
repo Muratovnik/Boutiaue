@@ -1,0 +1,456 @@
+@charset "UTF-8";
+/* ---------------------
+        Шрифт
+--------------------- */
+@font-face {
+  font-family: "Museo";
+  src: url("../font/Museo Cyrl 500.otf"), url("../font/__MACOSX/._Museo Cyrl 500.otf");
+  font-weight: 500;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Museo";
+  src: url("../font/Museo Cyrl 700.otf"), url("../font/__MACOSX/._Museo Cyrl 700.otf");
+  font-weight: 700;
+  font-style: normal; }
+
+@font-face {
+  font-family: "MuseoSans";
+  src: url("../font/MuseoSansCyrl_500.otf"), url("../font/__MACOSX/._MuseoSansCyrl_500.otf");
+  font-weight: 500;
+  font-style: normal; }
+
+/* ---------------------
+    Keyframes animations
+--------------------- */
+/* ---------------------
+    Общие стили
+--------------------- */
+/* Указываем box sizing */
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
+  *::before, *::after {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box; }
+
+ul[class],
+ol[class] {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+
+/* Убираем внешние отступы */
+body,
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+p,
+ul[class],
+ol[class],
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0; }
+
+/* Выставляем основные настройки по-умолчанию для body */
+body {
+  min-height: 100vh;
+  position: relative;
+  color: var(--black-txt);
+  font-family: "Museo", sans-serif;
+  font-size: 16px;
+  line-height: 137%;
+  font-weight: 500;
+  background-color: var(--pure-beige);
+  scroll-behavior: smooth; }
+
+/* Заголовки */
+
+h1,
+.h1 {
+  font-size: 36px;
+  line-height: 139%;
+  font-weight: 700; }
+
+
+h2,
+.h2 {
+  font-size: 28px;
+  line-height: 121%;
+  font-weight: 700; }
+
+
+h3,
+.h3 {
+  font-size: 22px;
+  line-height: 136%;
+  font-weight: 700; }
+
+h5 {
+  font-size: 16px;
+  line-height: 100%;
+  font-weight: 700; }
+
+/* Элементы a, у которых нет класса, сбрасываем до дефолтных стилей */
+a {
+  text-decoration: none;
+  color: inherit; }
+
+/* Упрощаем работу с изображениями */
+img {
+  max-width: 100%;
+  display: block; }
+
+/* Указываем понятную периодичность в потоке данных у article*/
+article > * + * {
+  margin-bottom: 1em; }
+
+/* Наследуем шрифты для инпутов и кнопок */
+input,
+button,
+textarea,
+select {
+  font: inherit; }
+
+/* Удаляем все анимации и переходы для людей, которые предпочитай их не использовать */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    -webkit-animation-duration: 0.01ms !important;
+            animation-duration: 0.01ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+            animation-iteration-count: 1 !important;
+    -webkit-transition-duration: 0.01ms !important;
+            transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important; } }
+
+/* Визуально скрывает элемент. Остается видимым для ридеров */
+.visually-hidden {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px; }
+
+/* Контейнер */
+.container {
+  max-width: 1140px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 0 auto; }
+
+/* Кнопки */
+.btn {
+  font-size: 16px;
+  line-height: 19px;
+  padding-top: 15px;
+  padding-bottom: 16px;
+  padding-left: 43px;
+  padding-right: 43px;
+  border: none;
+  border-radius: 100px;
+  color: #ffffff;
+  background-color: #F08B98; }
+
+/* ---------------------
+        Header
+--------------------- */
+.main-header {
+  position: fixed;
+  z-index: 5;
+  width: 100%;
+  background-color: transparent; }
+  .main-header > .container {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding-top: 7px;
+    padding-bottom: 3px; }
+  .main-header--active {
+    background-color: rgba(255, 255, 255, 0.9);
+    -webkit-box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1); }
+
+/* Навигация */
+.main-header__nav {
+  width: 100%;
+  background-color: #ffffff;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none; }
+
+/* Мобильная пользовательская навигация */
+ul.main-header__m-user-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding-top: 19px;
+  padding-bottom: 16px; }
+
+.mob-user-subnav__item {
+  width: 33.33%;
+  -webkit-box-shadow: 1px 0px 0px 0px #EAEAEA;
+          box-shadow: 1px 0px 0px 0px #EAEAEA; }
+  .mob-user-subnav__item:last-child {
+    -webkit-box-shadow: none;
+            box-shadow: none; }
+  .mob-user-subnav__item a {
+    display: grid;
+    place-items: center;
+    padding-top: 7px;
+    padding-bottom: 6px; }
+
+.main-header__goods-list-wrap {
+  position: relative;
+  border-top: 2px solid #F08B98;
+  border-bottom: 2px solid #F08B98; }
+
+.main-header__nav-item {
+  -webkit-box-shadow: 0px 1px 0px 0px #EAEAEA;
+          box-shadow: 0px 1px 0px 0px #EAEAEA; }
+  .main-header__nav-item:last-child {
+    -webkit-box-shadow: none;
+            box-shadow: none; }
+
+.main-header__nav-link {
+  display: block;
+  position: relative;
+  padding-left: 34px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  /* Иконки */
+  /* Стрелки */ }
+  .main-header__nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    width: 25px;
+    height: 26px;
+    background: no-repeat cover; }
+  .main-header__nav-link--cosmetics::after {
+    background-image: url(../img/header/icons/navIcons/nailpolish.svg); }
+  .main-header__nav-link--equip::after {
+    background-image: url(../img/header/icons/navIcons/dryer.svg); }
+  .main-header__nav-link--decor::after {
+    background-image: url(../img/header/icons/navIcons/ring.svg); }
+  .main-header__nav-link--blog::after {
+    background-image: url(../img/header/icons/navIcons/blog.svg); }
+  .main-header__nav-link::before {
+    content: "";
+    position: absolute;
+    right: 23px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    width: 4px;
+    height: 8px;
+    background: url(../img/arrowRoght.svg) no-repeat center;
+    background-size: cover; }
+
+/* Выпадающее меню */
+.inner-lists {
+  display: none; }
+
+.main-header__user-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+
+.main-header__menu-toggle {
+  border: none;
+  background-color: transparent;
+  padding: 12px 10px;
+  margin-right: -12px; }
+
+.main-header__user-item {
+  display: none; }
+  .main-header__user-item--cart {
+    display: block; }
+
+/* ---------------------
+    Header responsive
+--------------------- */
+/* ---------------------
+        Footer
+--------------------- */
+/* ---------------------
+    Главная страница
+--------------------- */
+/* Первая секция */
+.intro {
+  position: relative;
+  background-color: #b7b7b7;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  height: 100vh;
+  background-image: url(../img/Bitmap.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; }
+  .intro::after {
+    z-index: 0;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.12); }
+  .intro .container {
+    position: relative;
+    z-index: 1; }
+
+.intro__center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 22%;
+  color: #ffffff; }
+
+.intro__title {
+  margin-bottom: 10px; }
+
+.intro__bottom {
+  padding-top: 25px;
+  padding-bottom: 21px;
+  padding-right: 32px;
+  padding-left: 32px;
+  border-radius: 25px 25px 0px 0px;
+  color: #000000;
+  text-align: center;
+  background-color: #ffffff; }
+
+/* Подборка товаров */
+.catalog {
+  padding-top: 10px;
+  padding-bottom: 20px; }
+
+.catalog__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  place-items: center;
+  grid-row-gap: 20px;
+  color: #000000;
+  font-family: "MuseoSans", sans;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 500;
+  background-color: #ffffff; }
+
+.catalog__item {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content; }
+  .catalog__item:last-child {
+    display: none; }
+
+.catalog__link {
+  display: grid;
+  place-items: center;
+  text-align: center; }
+  .catalog__link img {
+    width: 75px;
+    height: 75px;
+    margin-bottom: 10px; }
+  .catalog__link span {
+    max-width: 105px; }
+
+.catalog,
+.intro,
+.main-header {
+  display: none; }
+
+.write-us {
+  padding-right: 19px; }
+
+.write-us__form {
+  height: 100vh;
+  overflow-y: scroll; }
+
+.input {
+  width: 100%;
+  outline: none;
+  padding: 11px 50px 11px 20px;
+  line-height: 1.5;
+  background-color: rgba(240, 139, 152, 0.05);
+  border: 2px solid rgba(240, 139, 152, 0.3);
+  border-radius: 100px; }
+  .input:focus {
+    border: 2px solid #F08B98; }
+
+.write-us__top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 20px; }
+
+.write-us__close {
+  border: none;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  background-color: transparent; }
+  .write-us__close img {
+    width: 15px;
+    height: 15px; }
+
+.write-us__wrap {
+  margin-bottom: 15px; }
+  .write-us__wrap label,
+  .write-us__wrap input {
+    display: block; }
+  .write-us__wrap label {
+    line-height: 19px;
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+    margin-bottom: 5px; }
+  .write-us__wrap textarea {
+    padding: 11px 20px;
+    border-radius: 25px;
+    min-height: 281px; }
+
+.write-us__input--tel {
+  width: 195px; }

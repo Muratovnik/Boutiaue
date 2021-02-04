@@ -1,0 +1,195 @@
+/* ---------------------
+        Header
+--------------------- */
+.main-header {
+    position: fixed;
+    z-index: 5;
+    width: 100%;
+    & > .container {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: {
+            top: 7px;
+            bottom: 3px;
+        };
+    }
+    background-color: transparent;
+
+    &--active {
+        background-color: rgba($white, 0.9);
+        box-shadow: 0px 5px 5px rgba($black, 0.1);
+    }
+}
+
+/* Навигация */
+.main-header__nav {
+    width: 100%;
+    background-color: $white;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: none;
+}
+
+/* Мобильная пользовательская навигация */
+ul.main-header__m-user-nav {
+    display: flex;
+    justify-content: space-around;
+    padding: {
+        top: 19px;
+        bottom: 16px;
+    };
+}
+.mob-user-subnav__item {
+    width: 33.33%;
+    box-shadow: 1px 0px 0px 0px $grey;
+    &:last-child{
+        box-shadow: none;
+    }
+
+    a {
+        display: grid;
+        place-items: center;
+        padding: {
+            top: 7px;
+            bottom: 6px;
+        }
+    }
+}
+
+.main-header__goods-list-wrap {
+    position: relative;
+    border: {
+        top: 2px solid $pink;
+        bottom: 2px solid $pink;
+    };
+}
+.main-header__nav-item {
+    box-shadow: 0px 1px 0px 0px $grey;
+    &:last-child {
+        box-shadow: none;
+    }
+
+}
+.main-header__nav-link {
+    display: block;
+    position: relative;
+    padding: {
+        left: 34px;
+        top: 20px;
+        bottom: 20px;
+    };
+
+    /* Иконки */
+    &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+
+        width: 25px;
+        height: 26px;
+
+        background: no-repeat cover;
+    }
+
+    &--cosmetics {
+        &::after {
+            background-image: url(../img/header/icons/navIcons/nailpolish.svg);
+        }
+    }
+    &--equip {
+        &::after {
+            background-image: url(../img/header/icons/navIcons/dryer.svg);
+        }
+    }
+    &--decor {
+        &::after {
+            background-image: url(../img/header/icons/navIcons/ring.svg);
+        }
+    }
+    &--blog {
+        &::after {
+            background-image: url(../img/header/icons/navIcons/blog.svg);
+        }
+    }
+
+    /* Стрелки */
+    &::before {
+        content: "";
+        position: absolute;
+        right: 23px;
+        top: 50%;
+        transform: translateY(-50%);
+
+        width: 4px;
+        height: 8px;
+
+        background: url(../img/arrowRoght.svg) no-repeat center;
+        background-size: cover;
+    }
+}
+
+/* Выпадающее меню */
+.inner-lists {
+    display: none;
+}
+
+.main-header__user-nav {
+    display: flex;
+}
+.main-header__menu-toggle {
+    border: none;
+    background-color: transparent;
+    padding: 12px 10px;
+    margin-right: -12px;
+}
+.main-header__user-item {
+    display: none;
+    &--cart {
+        display: block;
+    }
+}
+
+/* ---------------------
+    Header responsive
+--------------------- */
+// @media (min-width: $tablet) {
+//     .main-header{
+//         .container {
+//             padding: {
+//                 top: 11px;
+//                 bottom: 9px;
+//             };
+//         }
+//     }
+//     .main-header__nav-item {
+//         width: max-content;
+//         padding-left: 33px;
+//         line-height: 100%;
+//     }
+
+//     .main-header__list {
+//         display: flex;
+//     }
+
+//     .main-header__user-item {
+//         display: block;
+//         margin-right: 20px;
+//         &:last-child{
+//             margin-right: 0;
+//         }
+//     }
+//     .main-header__menu-toggle {
+//         display: none;
+//     }
+//     .main-header__nav {
+//         display: flex;
+//     }
+//     .inner-lists {
+//         display: none;
+//     }
+// }
