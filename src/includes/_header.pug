@@ -1,7 +1,8 @@
 header.main-header
     .container
         button.main-header__menu-toggle(aria-label="Открыть/закрыть меню")
-            img(src="img/header/menuOpener.svg")
+            img(src="img/header/menuOpener.svg" alt='Открыть')
+            img(src="img/blackCross.svg" alt='Заркыть')
         a(href='index.html').main-header__logo.logo
             img(src="img/header/logo.svg", alt="Boutique")
         nav.main-header__nav
@@ -9,13 +10,13 @@ header.main-header
                 ul.main-header__m-user-nav.mob-user-subnav
                     li.mob-user-subnav__item
                         a(href="#")
-                            img(src="../img/header/icons/favourite/heartColor.svg", alt="Избранное")
+                            img(src="img/header/icons/favourite/heartColor.svg", alt="Избранное")
                     li.mob-user-subnav__item
                         a(href="#")
-                            img(src="../img/header/icons/cart/cartColor.svg", alt="Корзина")
+                            img(src="img/header/icons/cart/cartColor.svg", alt="Корзина")
                     li.mob-user-subnav__item
                         a(href="#")
-                            img(src="../img/header/icons/login/userColor.svg", alt="Профиль")
+                            img(src="img/header/icons/login/userColor.svg", alt="Профиль")
                 ul.main-header__nav-list
                     div.main-header__goods-list-wrap
                         li.main-header__nav-item
@@ -26,15 +27,15 @@ header.main-header
                             +add_menu_item(4, 4, 'Украшения', 'decor')
                     li.main-header__nav-item
                         a(href="").main-header__nav-link.-blog Бьюти-бложик
-                        .main-header__dropdown
         ul.main-header__user-nav
             li.main-header__user-item.-cart
-                a(href="#")
-                    img(src="../img/header/icons/cart/cart.svg", alt="Корзина")
+                a(href="#" aria-label='Корзина')
+                    include ../img/header/icons/cart/cart.svg
             li.main-header__user-item
-                a(href="#")
-                    img(src="../img/header/icons/favourite/heart.svg", alt="Избранное")        
+                a(href="#" aria-label='Избранное')
+                    include ../img/header/icons/favourite/heart.svg        
             li.main-header__user-item
-                a(href="#")
-                    img(src="../img/header/icons/login/user.svg", alt="Профиль")
+                a(href="#" aria-label='Профиль')
+                    include ../img/header/icons/login/user.svg
+    .main-header__dropdown
 

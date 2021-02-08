@@ -1,3 +1,13 @@
 /* ---------------------
     Keyframes animations
 --------------------- */
+
+/* Выпадение фона меню */
+@keyframes popup {
+    from {
+        top: -20vh;
+    }
+    to {
+        top: 0;
+    }
+}

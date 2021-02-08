@@ -48,6 +48,8 @@ body {
     background-color: var(--pure-beige);
 
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale; 
 }
 
 /* Заголовки */
@@ -138,6 +140,8 @@ select {
 
 /* Кнопки */
 .btn {
+    outline: none;
+    cursor: pointer;
     font-size: 16px;
     line-height: 19px;
 
@@ -151,4 +155,8 @@ select {
     border-radius: $radius;
     color: $white;
     background-color: $pink;
+
+    &:disabled {
+        opacity: 0.2;
+    }
 }

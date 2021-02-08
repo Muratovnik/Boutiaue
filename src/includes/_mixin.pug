@@ -9,6 +9,7 @@ mixin inner_list(needBlocks, needItems, listTitle)
 
 mixin add_menu_item(innerBlocks, innerItems, listTitle, prefix)
     a(href="#" class='main-header__nav-link main-header__nav-link--'+prefix) #{listTitle}
+        include ../img/arrowRoght.svg
     .inner-lists
         .container
             +inner_list(innerBlocks, innerItems, listTitle)

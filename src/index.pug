@@ -1,4 +1,4 @@
-- const title = "Косметика";
+- const title = "Boutique";
 include ./includes/_mixin.pug
 doctype html
 html(lang="ru")
@@ -9,94 +9,111 @@ html(lang="ru")
         include ./includes/_header.pug
 
         // Content
-        main
+        main(data-scroll-container)
             section.intro
-                video(src="img/video.mp4" loop preload autoplay)
-                .intro__center.container
+                .intro__bg#intro__bg(data-scroll data-scroll-speed="-5")
+                    img(src="img/Bitmap.jpg", alt="Девушка").intro__mob-bg
+                    .intro__net
+                        img(src='img/bg_video.png' alt='')
+                    |
+                    video(id='test' src="img/video.mp4" autoplay muted loop)
+                .intro__center
                         h1.intro__title Ты — классная!
-                        button.btn.intro__btn Обратная связь
-                .container
+                        button.btn.intro__btn.write-us-trigger Обратная связь
+                .intro__bottom-container(data-scroll data-scroll-speed="5")
                     .intro__bottom
                         p.h3 Мы выбрали для тебя самые классные товары из нашего интернет-магазина:
-            section.catalog
-                h2.visually-hidden Подборка
-                .container
-                    ul.catalog__list
-                        li.catalog__item
-                            - let i = 1;
-                            a.catalog__link(href="#")
-                                img(src="img/goods/item"+i+"@2x.jpg", alt="Лак")
-                                span 
-                                    | Лаки для 
-                                    br 
-                                    | ногтей
-                            - i++
-                        li.catalog__item
-                            a.catalog__link(href="#")
-                                img(src="img/goods/item"+i+"@2x.jpg", alt="Лак")
-                                span 
-                                    | Дизайн для
-                                    br
-                                    | ногтей
-                            - i++
-                        li.catalog__item
-                            a.catalog__link(href="#")
-                                img(src="img/goods/item"+i+"@2x.jpg", alt="Лак")
-                                span 
-                                    | Инструменты
-                                    br
-                                    | для маникюра
-                                    br
-                                    | и педикюра
-                            - i++
-                        li.catalog__item
-                            a.catalog__link(href="#")
-                                img(src="img/goods/item"+i+"@2x.jpg", alt="Лак")
-                                span Бижутерия
-                            - i++
-                        li.catalog__item
-                            a.catalog__link(href="#")
-                                img(src="img/goods/item"+i+"@2x.jpg", alt="Лак")
-                                span Гель-лаки
-                            - i++
-                        li.catalog__item
-                            a.catalog__link(href="#")
-                                img(src="img/goods/item"+i+"@2x.jpg", alt="Лак")
-                                span 
-                                    | Украшения
-                                    br
-                                    | для волос
-                            - i++
-                        li.catalog__item
-                            a.catalog__link(href="#")
-                                img(src="img/goods/item"+i+"@2x.jpg", alt="Лак")
-                                span 
-                                    | Оборудование для 
-                                    br
-                                    | парикмахерских
-                            - i++
-            section.write-us
-                .container
-                    .write-us__custom-scroll
-                        .write-us__top
-                            h2 Напишите нам
-                            button(aria-label='Закрыть форму').write-us__close
-                                img(src="img/Union.svg", alt="Закрыть")
-                        form(method="POST").write-us__form
-                            p.write-us__wrap
-                                label(for="name").write-us__label Имя:
-                                input(type="text" id='name').input
-                            p.write-us__wrap
-                                label(for="tel").write-us__label Телефон:
-                                input(type="tel" id="tel").write-us__input.-tel.input
-                            p.write-us__wrap
-                                label(for="email").write-us__label Эл. почта:
-                                input(type="email" id="email").input
-                            p.write-us__wrap
-                                label(for="message").write-us__label Сообщение:
-                                textarea(id='message').input
-                            p.write-us__wrap.write-us__ckecbox-wrap
-                                input(type="checkbox" id='privacyPolicy').checkbox
-                                label(for="privacyPolicy").checbox-customazier Проставляя «галку» и далее нажимая кнопку «Принимаю», я даю согласие в его полном изложении на обработку через сайт своих персональных данных.
-                            button.btn.write-us__btn Отправить
+                    section.catalog
+                        h2.visually-hidden Подборка
+                        .container
+                            ul.catalog__list
+                                li.catalog__item
+                                    - let i = 1;
+                                    a.catalog__link(href="#")
+                                        img(src="img/goods/item"+i+"@2x.jpg", alt="Лак")
+                                        span 
+                                            | Лаки для 
+                                            br 
+                                            | ногтей
+                                    - i++
+                                li.catalog__item
+                                    a.catalog__link(href="#")
+                                        img(src="img/goods/item"+i+"@2x.jpg", alt="Лак")
+                                        span 
+                                            | Дизайн для
+                                            br
+                                            | ногтей
+                                    - i++
+                                li.catalog__item
+                                    a.catalog__link(href="#")
+                                        img(src="img/goods/item"+i+"@2x.jpg", alt="Лак")
+                                        span 
+                                            | Инструменты
+                                            br
+                                            | для маникюра
+                                            br
+                                            | и педикюра
+                                    - i++
+                                li.catalog__item
+                                    a.catalog__link(href="#")
+                                        img(src="img/goods/item"+i+"@2x.jpg", alt="Лак")
+                                        span Бижутерия
+                                    - i++
+                                li.catalog__item
+                                    a.catalog__link(href="#")
+                                        img(src="img/goods/item"+i+"@2x.jpg", alt="Лак")
+                                        span Гель-лаки
+                                    - i++
+                                li.catalog__item
+                                    a.catalog__link(href="#")
+                                        img(src="img/goods/item"+i+"@2x.jpg", alt="Лак")
+                                        span 
+                                            | Украшения
+                                            br
+                                            | для волос
+                                    - i++
+                                li.catalog__item
+                                    a.catalog__link(href="#")
+                                        img(src="img/goods/item"+i+"@2x.jpg", alt="Лак")
+                                        span 
+                                            | Оборудование для 
+                                            br
+                                            | парикмахерских
+                                    - i++    
+            .modal-wrapper
+                .write-us-bg-trigger.write-us-trigger
+                section.write-us
+                    .container
+                        .write-us__custom-scroll
+                            .write-us__top
+                                h2 Напишите нам
+                                button(aria-label='Закрыть форму').write-us__close.write-us-trigger
+                                    img(src="img/blackCross.svg", alt="X")
+                            form(method="POST" name="writeUs").write-us__form
+                                .write-us__wrap
+                                    label(for="name").write-us__label Имя:
+                                    .input-wrap
+                                        input(type="text" required id='name').input
+                                .write-us__wrap.-tel
+                                    label(for="tel").write-us__label Телефон:
+                                    .input-wrap
+                                        input(type="tel" id="tel" required oninput="this.value = this.value.replace(/[^0-9 -]/, ''); canSubmit();").write-us__input.-tel.input
+                                .write-us__wrap
+                                    label(for="email").write-us__label Эл. почта:
+                                    .input-wrap
+                                        input(type="email" required id="email").input
+                                .write-us__wrap
+                                    label(for="message").write-us__label Сообщение:
+                                    textarea(id='message').input
+                                .write-us__wrap.write-us__ckecbox-wrap
+                                    input(type="checkbox" id='privacyPolicy' required oninput='canSubmit()').checkbox
+                                    label(for="privacyPolicy").checbox-customazier Проставляя «галку» и далее нажимая кнопку «Принимаю», я даю согласие в его полном изложении на обработку через сайт своих персональных данных.
+                                button(disabled id='disabledBtn').btn.write-us__btn Отправить
+            section.white-section
+        script(src='js/previous.js')
+        script(src='js/intro-block.js')
+        script(src='js/resize.js')
+        script(src='js/modal.js')
+        script(src='js/slides.js')
+        script(src='js/topMenu.js')         
         script(src='js/script.js')

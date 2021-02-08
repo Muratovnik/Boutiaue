@@ -17,15 +17,43 @@
     }
     background-color: transparent;
 
+    &::after {
+        content: "";
+        position: absolute;
+        top: -20vh;
+        transition: all 0.5s;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: $white;
+
+        z-index: -1;
+    }
+
     &--active {
-        background-color: $white !important;
-        box-shadow: 0px 5px 5px rgba($black, 0.1);
+        &::after {
+            height: 200%;
+            animation-duration: 0.5s;
+            animation-name: popup;
+            top: 0;
+        }
+    }
+    &--active-modal {
+        &::after {
+            top: 0;
+            box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.132586);
+            animation-duration: 0.2s;
+            animation-name: popup;
+        }
+        z-index: 21;
+        
     }
 }
 
 /* Навигация */
 .main-header__nav {
     width: 100%;
+    height: 100vh;
     background-color: $white;
     position: absolute;
     top: 100%;
@@ -65,34 +93,33 @@ ul.main-header__m-user-nav {
         top: 2px solid $pink;
         bottom: 2px solid $pink;
     }
-
-    .main-header__nav-link {
-        /* Стрелки */
-        &::before {
-            content: "";
-            position: absolute;
-            right: 23px;
-            top: 50%;
-            transform: translateY(-50%) rotate(90deg);
-            transition: all 0.3s;
-
-            width: 4px;
-            height: 8px;
-
-            background: url(../img/arrowRoght.svg) no-repeat center;
-            background-size: cover;
-        }
-        &--active {
-            &::before {
-                transform: translateY(-50%) rotate(270deg);
-            }
-        }
-    }
 }
 .main-header__nav-item {
     box-shadow: 0px 1px 0px 0px $grey;
     &:last-child {
         box-shadow: none;
+    }
+    /* Стрелки */
+    svg {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%) rotate(90deg);
+        transition: $transition3;
+        width: 8px;
+        height: 8px;
+        path {
+            transition: $transition3;
+        }
+    }
+    &--active {
+        svg {
+            transform: translateY(-50%) rotate(270deg);
+            path {
+
+                stroke: $pink;
+            }
+        }
     }
 }
 .main-header__nav-link {
@@ -103,6 +130,7 @@ ul.main-header__m-user-nav {
         top: 20px;
         bottom: 20px;
     }
+    transition: $transition3;
 
     /* Иконки */
     &::after {
@@ -139,11 +167,24 @@ ul.main-header__m-user-nav {
             background-image: url(../img/header/icons/navIcons/blog.svg);
         }
     }
+    &:hover {
+        color: $pink;
+        svg {
+            path {
+                stroke: $pink;
+            }
+        }
+    }
+    &--active {
+        color: $pink;
+    }
 }
 
 /* Выпадающее меню */
 .inner-lists {
     display: none;
+    max-height: 50vh;
+    overflow-y: auto;
 }
 
 .main-header__user-nav {
@@ -154,11 +195,42 @@ ul.main-header__m-user-nav {
     background-color: transparent;
     padding: 12px 10px;
     margin-right: -12px;
+
+    & > img {
+        width: 23px;
+        height: 13px;
+        &:last-child {
+            display: none;
+        }
+    }
+
+    &--active {
+        & > img {
+            &:first-child {
+                display: none !important;
+            }
+            &:last-child {
+                display: block !important;
+            }
+        }
+    }
 }
 .main-header__user-item {
     display: none;
     &--cart {
         display: block;
+    }
+    a {
+        display: block;
+        &:hover {
+            svg {
+                fill: $pink;
+                path {
+                    transition: $transition3;
+                    fill: inherit;
+                }
+            }
+        }
     }
 }
 .ad {
@@ -168,17 +240,28 @@ ul.main-header__m-user-nav {
     padding: 19px 19px 16px 17px;
     background-image: url(../img/adbg.jpg);
     background-repeat: no-repeat;
-    background-size: initial;
+    background-size: cover;
     background-position: left;
     h5 {
         font-size: 16px;
         line-height: 19px !important;
+        margin-top: 0;
         margin-bottom: 9px;
     }
     p {
         font-size: 14px;
         line-height: 17px;
-        max-width: 89%;
+        max-width: 70%;
+    }
+}
+.inner-lists__item-wrap {
+    margin-bottom: 15px;
+    h5 {
+        margin: 0 0 16px 0;
+        line-height: 24px;
+    }
+    &:last-child {
+        margin-bottom: 0;
     }
 }
 /* ---------------------
@@ -193,6 +276,7 @@ ul.main-header__m-user-nav {
                 top: 11px;
                 bottom: 9px;
             }
+            z-index: 2;
             justify-content: space-between;
         }
     }
@@ -236,6 +320,7 @@ ul.main-header__m-user-nav {
         }
     }
     .main-header__nav {
+        height: auto;
         position: static;
         display: block;
         background-color: transparent;
@@ -287,6 +372,7 @@ ul.main-header__m-user-nav {
         top: 69px;
         left: 0;
         width: 100%;
+        max-height: auto;
         height: auto;
 
         z-index: 11;
@@ -324,10 +410,7 @@ ul.main-header__m-user-nav {
         width: 20%;
         padding-left: 15px;
         border-left: 1px solid rgba($pink, 0.15);
-        h5 {
-            margin: 0 0 16px 0;
-            line-height: 24px;
-        }
+        margin-bottom: 0;
         &:first-child {
             border-left: none;
         }
@@ -341,6 +424,7 @@ ul.main-header__m-user-nav {
     .inner-lists__link {
         position: relative;
         padding-bottom: 5px;
+        transition: $transition3;
         &::after {
             content: "";
             position: absolute;
@@ -349,6 +433,15 @@ ul.main-header__m-user-nav {
             width: 100%;
             height: 1px;
             background-color: $pink-saturated;
+        }
+        &:hover {
+            color: $pink;
+        }
+    }
+    .ad {
+        background-size: initial;
+        p {
+            max-width: 89%;
         }
     }
 }
