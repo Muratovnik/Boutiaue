@@ -11,10 +11,11 @@ html(lang="ru")
         // Content
         main
             section.intro
-                .container
-                    .intro__center
+                video(src="img/video.mp4" loop preload autoplay)
+                .intro__center.container
                         h1.intro__title Ты — классная!
                         button.btn.intro__btn Обратная связь
+                .container
                     .intro__bottom
                         p.h3 Мы выбрали для тебя самые классные товары из нашего интернет-магазина:
             section.catalog
@@ -25,17 +26,28 @@ html(lang="ru")
                             - let i = 1;
                             a.catalog__link(href="#")
                                 img(src="img/goods/item"+i+"@2x.jpg", alt="Лак")
-                                span Лаки для ногтей
+                                span 
+                                    | Лаки для 
+                                    br 
+                                    | ногтей
                             - i++
                         li.catalog__item
                             a.catalog__link(href="#")
                                 img(src="img/goods/item"+i+"@2x.jpg", alt="Лак")
-                                span Дизайн для ногтей
+                                span 
+                                    | Дизайн для
+                                    br
+                                    | ногтей
                             - i++
                         li.catalog__item
                             a.catalog__link(href="#")
                                 img(src="img/goods/item"+i+"@2x.jpg", alt="Лак")
-                                span Инструменты для маникюра и педикюра
+                                span 
+                                    | Инструменты
+                                    br
+                                    | для маникюра
+                                    br
+                                    | и педикюра
                             - i++
                         li.catalog__item
                             a.catalog__link(href="#")
@@ -50,29 +62,41 @@ html(lang="ru")
                         li.catalog__item
                             a.catalog__link(href="#")
                                 img(src="img/goods/item"+i+"@2x.jpg", alt="Лак")
-                                span Украшения для волос
+                                span 
+                                    | Украшения
+                                    br
+                                    | для волос
                             - i++
                         li.catalog__item
                             a.catalog__link(href="#")
                                 img(src="img/goods/item"+i+"@2x.jpg", alt="Лак")
-                                span Оборудование для парикмахерских
+                                span 
+                                    | Оборудование для 
+                                    br
+                                    | парикмахерских
                             - i++
             section.write-us
                 .container
-                    .write-us__top
-                        h2 Напишите нам
-                        button(aria-label='Закрыть форму').write-us__close
-                            img(src="img/Union.svg", alt="Закрыть")
-                    form(method="POST").write-us__form
-                        p.write-us__wrap
-                            label(for="name").write-us__label Имя:
-                            input(type="text").input
-                        p.write-us__wrap
-                            label(for="name").write-us__label Телефон:
-                            input(type="tel").write-us__input.-tel.input
-                        p.write-us__wrap
-                            label(for="name").write-us__label Эл. почта:
-                            input(type="email").input
-                        p.write-us__wrap
-                            label(for="name").write-us__label Сообщение:
-                            textarea.input
+                    .write-us__custom-scroll
+                        .write-us__top
+                            h2 Напишите нам
+                            button(aria-label='Закрыть форму').write-us__close
+                                img(src="img/Union.svg", alt="Закрыть")
+                        form(method="POST").write-us__form
+                            p.write-us__wrap
+                                label(for="name").write-us__label Имя:
+                                input(type="text" id='name').input
+                            p.write-us__wrap
+                                label(for="tel").write-us__label Телефон:
+                                input(type="tel" id="tel").write-us__input.-tel.input
+                            p.write-us__wrap
+                                label(for="email").write-us__label Эл. почта:
+                                input(type="email" id="email").input
+                            p.write-us__wrap
+                                label(for="message").write-us__label Сообщение:
+                                textarea(id='message').input
+                            p.write-us__wrap.write-us__ckecbox-wrap
+                                input(type="checkbox" id='privacyPolicy').checkbox
+                                label(for="privacyPolicy").checbox-customazier Проставляя «галку» и далее нажимая кнопку «Принимаю», я даю согласие в его полном изложении на обработку через сайт своих персональных данных.
+                            button.btn.write-us__btn Отправить
+        script(src='js/script.js')

@@ -2,7 +2,7 @@ header.main-header
     .container
         button.main-header__menu-toggle(aria-label="Открыть/закрыть меню")
             img(src="img/header/menuOpener.svg")
-        .main-header__logo.logo
+        a(href='index.html').main-header__logo.logo
             img(src="img/header/logo.svg", alt="Boutique")
         nav.main-header__nav
             .container
@@ -20,13 +20,13 @@ header.main-header
                     div.main-header__goods-list-wrap
                         li.main-header__nav-item
                             +add_menu_item(4, 4, 'Косметика', 'cosmetics')
-                                include blocks/_advertisement.pug
                         li.main-header__nav-item
                             +add_menu_item(4, 4, 'Оборудование', 'equip')
                         li.main-header__nav-item
                             +add_menu_item(4, 4, 'Украшения', 'decor')
                     li.main-header__nav-item
                         a(href="").main-header__nav-link.-blog Бьюти-бложик
+                        .main-header__dropdown
         ul.main-header__user-nav
             li.main-header__user-item.-cart
                 a(href="#")

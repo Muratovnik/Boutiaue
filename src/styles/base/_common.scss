@@ -72,6 +72,14 @@ h3 {
 h5 {
     @include font(16px, 100%, 700);
 }
+@media (min-width: $tablet) {
+    h1 {
+        @include font(72px, 86.4px, 700);
+    }
+    h3 {
+        @include font(28px, 34px, 700);
+    }
+}
 
 /* Элементы a, у которых нет класса, сбрасываем до дефолтных стилей */
 a {
@@ -134,10 +142,10 @@ select {
     line-height: 19px;
 
     padding: {
-        top: 15px;
+        top: 16px;
         bottom: 16px;
-        left: 43px;
-        right: 43px;
+        left: 44px;
+        right: 44px;
     };
     border: none;
     border-radius: $radius;

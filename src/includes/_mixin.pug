@@ -1,13 +1,15 @@
 mixin inner_list(needBlocks, needItems, listTitle)
     - for (let x = 0; x < needBlocks; x++)
-        .inner-lists__item
+        .inner-lists__item-wrap
             h5(class="") #{listTitle} #{x+1}
             ul.inner-lists__list
                 - for (let x = 0; x < needItems; x++)
                     li.inner-lists__item
                         a(href="#").inner-lists__link Ссылка #{x + 1}
-                        
+
 mixin add_menu_item(innerBlocks, innerItems, listTitle, prefix)
     a(href="#" class='main-header__nav-link main-header__nav-link--'+prefix) #{listTitle}
     .inner-lists
-        +inner_list(innerBlocks, innerItems, listTitle)
+        .container
+            +inner_list(innerBlocks, innerItems, listTitle)
+            include blocks/_advertisement.pug

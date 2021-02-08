@@ -33,6 +33,10 @@
         position: relative;
         z-index: 1;
     }
+
+    video {
+        display: none;
+    }
 }
 .intro__center {
     display: flex;
@@ -82,8 +86,8 @@
     }
 }
 .catalog__link {
-    display: grid;
-    place-items: center;
+    display: block;
+    width: max-content;
     text-align: center;
     img {
         width: 75px;
@@ -95,18 +99,37 @@
     }
 }
 
-.catalog,
-.intro,
-.main-header {
+.write-us {
     display: none;
+    height: max-content;
+    max-width: 504px;
 }
 
-.write-us {
+/* Обертка для кастомного скролла */
+.write-us__custom-scroll {
+    padding-top: 30px;
+    height: 100vh;
     padding-right: 19px;
+
+    &::after {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background-color: $white;
+        right: 0;
+        bottom: 0;
+    }
+}
+
+/* Надстройки для скролла */
+.nicescroll-rails {
+    height: 520px !important;
+    overflow-y: hidden;
+    border-radius: 25px !important;
 }
 .write-us__form {
-    height: 100vh;
-    overflow-y: scroll;
+    padding-bottom: 30px;
 }
 .input {
     width: 100%;
@@ -155,9 +178,11 @@
         margin-bottom: 5px;
     }
     textarea {
+        width: 100%;
         padding: 11px 20px;
         border-radius: 25px;
         min-height: 281px;
+        resize: none;
     }
 }
 .write-us__input {
@@ -165,3 +190,149 @@
         width: 195px;
     }
 }
+.write-us__ckecbox-wrap {
+    label {
+        @include font(12px, 16px, 500);
+        max-width: 100%;
+    }
+}
+.checkbox {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+
+    &:checked {
+        & + .checbox-customazier::after {
+            background-color: #ECCFDF;
+        }
+    }
+}
+.checbox-customazier {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 0 !important;
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: -3px;
+        left: 0;
+
+        width: 20px;
+        height: 19px;
+        border: 2px solid $pink;
+        border-radius: 6px;
+    }
+}
+
+.write-us__btn {
+    width: 100%;
+}
+
+
+/* ---------------------
+    Index=page responsive
+--------------------- */
+@media (min-width: $tablet) {
+    .intro {
+        position: relative;
+        video {
+            display: block;
+            position: absolute;
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+        &::after {
+            background-image: url(../img/bg_video.png)
+        }
+        & > .container {
+            max-width: 1300px;
+        }
+    }
+    .intro__center {
+        margin-bottom: 0;
+        padding-top: 69px;
+        display: flex;
+        justify-content: center;
+        height: 100%;
+    }
+    .intro__title {
+        @include font(72px, 86px, 700);
+        margin-bottom: 15px;
+    }
+    .intro__bottom {
+        padding: 0 147px;
+        padding: {
+            top: 25px;
+            bottom: 35px;
+        };
+        .h3 {
+            max-width: 1005px;
+            width: 67%;
+            margin: 0 auto;
+            margin-bottom: 33px;
+        }
+    }
+    .catalog {
+        padding-top: 0;
+        padding-bottom: 0;
+        & > .container {
+            padding: 0;
+            max-width: 1005px;
+        }
+    }
+    ul.catalog__list {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    .catalog__item {
+        margin-right: 15px;
+        width: max-content;
+        &:last-child {
+            display: block;
+        }
+    }
+    .catalog__link {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        img {
+            z-index: 2;
+            margin-bottom: 10px;
+        }
+        span {
+            z-index: 2;
+            white-space: normal;
+        }
+        &::after {
+            opacity: 0;
+            transition: 0.3s ease-in-out;
+            content: "";
+            z-index: 1;
+            box-sizing: content-box;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: $white;
+            box-shadow: 0px 0px 15px #EAEAEA;
+            top: -13px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: {
+                top: 13px;
+                left: 37px;
+                right: 37px;
+                bottom: 26px;
+            };
+            border-radius: 30px;
+        }
+        &:hover {
+            &::after {
+                opacity: 1;
+            }
+        }
+    }
+ }
