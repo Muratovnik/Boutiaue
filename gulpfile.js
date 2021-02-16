@@ -1,4 +1,5 @@
 var gulp = require("gulp"),
+    babel = require("gulp-babel"),
     sass = require("gulp-sass"), //переводит SASS в CSS и компилирует
     concat = require("gulp-concat"), //объединение файлов - конкатенация
     watch = require("gulp-watch"), //обновление файлов в режиме реального времени
@@ -58,9 +59,12 @@ gulp.task("pug", function (param) {
     param();
 });
 
-//scripts
-gulp.task("uglify", function () {
-    return gulp.src("src/js/*.js").pipe(uglify()).pipe(gulp.dest("public/js"));
+gulp.task("scripts", async function () {
+    return gulp
+        .src("src/js/*.js")
+        .pipe(babel({ presets:["@babel/preset-env"] }))
+        .pipe(uglify())
+        .pipe(gulp.dest("public/js"));
 });
 
 //image
@@ -98,8 +102,8 @@ gulp.task("browser-sync", function (param) {
 
     browserSync.init(files, {
         server: {
-            baseDir: "public/"
-        }
+            baseDir: "public/",
+        },
         // proxy: "localhost/",
     });
     param();
@@ -109,11 +113,12 @@ gulp.task("browser-sync", function (param) {
 gulp.task("watch", function (param) {
     gulp.watch("src/**/*.scss", gulp.series("sass"));
     gulp.watch("src/**/*.pug", gulp.series("pug"));
-    gulp.watch("src/js/*.js", gulp.series("uglify"));
+    // gulp.watch("src/js/*.js", gulp.series("uglify"));
+    gulp.watch("src/js/*.js", gulp.series("scripts"));
     gulp.watch("src/images/**/*", gulp.series("images"));
     // gulp.watch("public/**/*.html").on("change", browserSync.reload);
     param();
 });
 
 //Это таск по умолчанию. Запускает одновременно все перечисленные в нем таски.
-gulp.task("default", gulp.series("watch", "browser-sync", "sass", "uglify", "pug"));
+gulp.task("default", gulp.series("watch", "browser-sync", "sass", "scripts", "pug"));

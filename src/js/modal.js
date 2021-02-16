@@ -20,6 +20,8 @@ let inputName = document.querySelector("#name");
 let inputEmail = document.querySelector("#email");
 let inputTel = document.querySelector("#tel");
 let inputPrivacy = document.querySelector("#privacyPolicy");
+let elem,
+    item;
 
 function checkValidate(elem) {
     if (elem.parentElement.classList.contains("invalid") || elem.value == "") {
@@ -47,23 +49,24 @@ function initModal() {
     let writeUsTriggers = document.querySelectorAll(".write-us-trigger");
     let modal = document.querySelector(".write-us");
     let counter = 0;
-    for (item of writeUsTriggers) {
+    Array.from(writeUsTriggers).forEach((item) => {
         item.addEventListener("click", () => {
             modalToggle(modal);
             counter++;
         });
-    }
+    });
     // *** Откзыть/закрыть ***
     function modalToggle(modal) {
         let wrap = modal.parentElement;
         let body = document.body;
-        wrap.classList.toggle("open");
         let mainHeader = document.querySelector(".main-header");
+
         mainHeader.classList.toggle("main-header--active-modal");
+        wrap.classList.toggle("open");
         if (counter % 2 == 0) {
             body.style.overflowY = "hidden";
         } else {
-            body.style.overflowY = "scroll";
+            body.style.overflowY = "auto";
         }
     }
 
@@ -85,12 +88,12 @@ function initModal() {
 
     let inputs = [inputName, inputEmail];
 
-    for (item of inputs) {
+    Array.from(inputs).forEach((item) => {
         item.addEventListener("blur", function (e) {
             e.stopPropagation();
             formValid(e);
         });
-    }
+    });
 
     function formValid(e) {
         let value = e.target.value;

@@ -36,7 +36,7 @@ $(window).on("scroll", function () {
             scrollCoef = $(window).height() * 0.00065;
             opacityCoef = $(".intro__center").height() * 0.0000131;
         } else {
-            scrollCoef = $(window).height() * 0.0015;
+            scrollCoef = $(window).height() * 0.002;
             opacityCoef = $(".intro__center").height() * 0.000035;
         }
     $("#intro__bg").css({

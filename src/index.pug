@@ -9,9 +9,9 @@ html(lang="ru")
         include ./includes/_header.pug
 
         // Content
-        main(data-scroll-container)
+        main
             section.intro
-                .intro__bg#intro__bg(data-scroll data-scroll-speed="-5")
+                .intro__bg#intro__bg
                     img(src="img/Bitmap.jpg", alt="Девушка").intro__mob-bg
                     .intro__net
                         img(src='img/bg_video.png' alt='')
@@ -93,7 +93,7 @@ html(lang="ru")
                                 .write-us__wrap
                                     label(for="name").write-us__label Имя:
                                     .input-wrap
-                                        input(type="text" required id='name').input
+                                        input(type="text" required id='name' oninput='canSubmit()').input
                                 .write-us__wrap.-tel
                                     label(for="tel").write-us__label Телефон:
                                     .input-wrap
@@ -101,7 +101,7 @@ html(lang="ru")
                                 .write-us__wrap
                                     label(for="email").write-us__label Эл. почта:
                                     .input-wrap
-                                        input(type="email" required id="email").input
+                                        input(type="email" required id="email" oninput='canSubmit()').input
                                 .write-us__wrap
                                     label(for="message").write-us__label Сообщение:
                                     textarea(id='message').input

@@ -47,7 +47,8 @@ function initMenu() {
     let fuse = true;
     let fuseTime = 150;
 
-    for (let i = 0; i < headerMenuLinks.length; i++) {
+    
+    for (let i = 0; i < Array.from(headerMenuLinks).length; i++) {
         headerMenuLinks[i].addEventListener("mouseover", function (e) {
             e.stopPropagation();
             showMenu(e.target, i);
@@ -55,7 +56,7 @@ function initMenu() {
     }
 
     if (!windowChecker.matches) {
-        for (let i = 0; i < headerMenuLinks.length; i++) {
+        for (let i = 0; i < Array.from(headerMenuLinks).length; i++) {
             headerMenuLinks[i].addEventListener("click", function (e) {
                 e.stopPropagation();
                 showMenu(e.target, i);
@@ -107,14 +108,14 @@ function initMenu() {
 
             // Чистка классов
             function cleaner(item, currentElem, elemClass) {
-                for (elem of item) {
+                Array.from(item).forEach(elem => {
                     if (
                         elem != currentElem &&
                         elem.classList.contains(`${elemClass}--active`)
                     ) {
                         removeActiveClass(elem, elemClass);
                     }
-                }
+                })
             }
 
             // Чистка классов других ссылок
@@ -124,11 +125,11 @@ function initMenu() {
             cleaner(headerMenuListItem, currentListItem, itemClass);
 
             // Скрывает другие списки
-            for (item of innerLists) {
+            Array.from(innerLists).forEach(item => {
                 if (item != currentList) {
                     slideUp(item, fuseTime);
                 }
-            }
+            })
 
             // Сокрытие всего
             function remover() {
@@ -201,3 +202,27 @@ function checkHeader() {
     }
 
 }
+
+
+$(window).on("scroll", function () {
+    // Коэффициенты, зависящие от высоты экрана
+    let scrollCoef,
+        opacityCoef;
+        if (windowChecker.matches) {
+            scrollCoef = $(window).height() * 0.00065;
+            opacityCoef = $(".intro__center").height() * 0.0000131;
+        } else {
+            scrollCoef = $(window).height() * 0.002;
+            opacityCoef = $(".intro__center").height() * 0.000035;
+        }
+    $("#intro__bg").css({
+        opacity: 1 - $(window).scrollTop() * opacityCoef,
+    });
+    $(".intro__center").css({
+        opacity: 1 - $(window).scrollTop() * opacityCoef,
+    });
+    $(".intro__bottom-container").css({
+        paddingBottom: $(window).scrollTop() * scrollCoef,
+    });
+    
+});

@@ -1,1 +1,8 @@
-window.onload=()=>{introCenterer(),initModal(),initMenu(),canSubmit()};
+"use strict";
+
+window.onload = function () {
+  introCenterer();
+  initModal();
+  initMenu();
+  canSubmit();
+};
