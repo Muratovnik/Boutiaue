@@ -70,8 +70,7 @@ function initMenu() {
     let itemClass = "main-header__nav-item";
     let linkClass = "main-header__nav-link";
     let dropDownClass = "main-header__dropdown";
-    let currentListItem = null;
-    let currentList = null;
+    let currentListItem, currentList;
 
     function removeActiveClass(elem, className) {
         elem.classList.remove(`${className}--active`);

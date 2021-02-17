@@ -20,8 +20,7 @@ let inputName = document.querySelector("#name");
 let inputEmail = document.querySelector("#email");
 let inputTel = document.querySelector("#tel");
 let inputPrivacy = document.querySelector("#privacyPolicy");
-let elem,
-    item;
+let elem, item;
 
 function checkValidate(elem) {
     if (elem.parentElement.classList.contains("invalid") || elem.value == "") {
@@ -71,24 +70,21 @@ function initModal() {
     }
 
     // *** Валидация ***
-    class Validator {
+    const validator = {
         isEmail(str) {
             return str.match(/^[A-Z0-9._%+-]+@[A-Z0-9-]+.[A-Z]{2,4}$/i) ? true : false;
-        }
+        },
         isPhone(str) {
             return str.match(/^[\d-\s]+$/) ? true : false;
-        }
+        },
         isText(str) {
             return str.match(/^[\sА-я]+$/);
-        }
-    }
-    const validator = new Validator();
-
-    let form = document.forms.writeUs;
+        },
+    };
 
     let inputs = [inputName, inputEmail];
 
-    Array.from(inputs).forEach((item) => {
+    inputs.forEach((item) => {
         item.addEventListener("blur", function (e) {
             e.stopPropagation();
             formValid(e);
@@ -99,9 +95,8 @@ function initModal() {
         let value = e.target.value;
         let wrapper = e.target.parentElement;
         let wrapperClass = wrapper.classList;
-        let parent, label;
-        parent = wrapper.parentElement;
-        label = parent.querySelector("label");
+        let parent = wrapper.parentElement;
+        let label = parent.querySelector("label");
         let result = false;
 
         let error = document.createElement("span");
